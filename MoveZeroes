@@ -1,0 +1,40 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class MoveZeroes {
+    public static void main(String[] args) {
+        MoveZeroes moveZeroes = new MoveZeroes();
+      //  int[] input = {0,1,0,3,12};
+        int[] input = {0,1,0,2,0,3,0,4};
+        moveZeroes.moveZeroes(input);
+    }
+
+
+
+    public void moveZeroes(int[] nums) {
+        // Use arraylist
+        // everytime see zero increment counter than using the counter add in necessary zeros
+
+        ArrayList<Integer> solution = new ArrayList<>();
+
+        int countZeros = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 0) {
+                countZeros++;
+            } else {
+                solution.add(nums[i]);
+            }
+        }
+
+        for (int i = 0; i < countZeros; i++) {
+            solution.add(0);
+        }
+
+        for (int i = 0; i < solution.size(); i++) {
+            nums[i] = solution.get(i);
+        }
+
+    }
+}
