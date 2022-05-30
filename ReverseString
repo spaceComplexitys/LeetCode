@@ -1,0 +1,35 @@
+public class ReverseString {
+    public static void main(String[] args) {
+        ReverseString reverseString = new ReverseString();
+       // char[] input = {'h','e','l','l', 'o'};
+        char[] input = {'H','a','n','n','a','h'};
+        reverseString.reverseString(input);
+    }
+
+
+    public void reverseString(char[] s) {
+        //
+        int indexChange = 0;
+        int length = s.length-1;
+
+        if (s.length % 2 != 0) {
+            indexChange = 1;
+        }
+        int loop = (s.length/2)+indexChange;
+
+        for (int i = 0; i < loop; i++) {
+            char firstTemp = 0;
+            char secondTemp = 0;
+
+
+            firstTemp = s[i];
+            secondTemp = s[length];
+
+            s[i] = secondTemp;
+            s[length] = firstTemp;
+            length--;
+
+        }
+    }
+
+}
