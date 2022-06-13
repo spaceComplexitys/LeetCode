@@ -1,35 +1,10 @@
 class Solution {
     public int[] twoSum(int[] numbers, int target) {
-        int[] solution = {0,0};
-
-        int firstIndex = 0;
-        int secondIndex = 0;
-
-        // nested loop Index 1, 2, ... check for all other index
-        // If the addition of two index i and j, then save the i and j
-        // set solution[0] and solution[1]
-
-        // Edge case if two numbers are the same
-        for (int i = 0; i < numbers.length-1; i++) {
-            if (numbers[i] == numbers[i+1] && numbers[i] + numbers[i+1] == target) {
-                solution[0] = i+1;
-                solution[1] = i+2;
-                System.out.println(Arrays.toString(solution));
-                return solution;
-            }
+        int l = 0, r = numbers.length - 1;
+        while (numbers[l] + numbers[r] != target) {
+            if (numbers[l] + numbers[r] > target) r--;
+            else l++;
         }
-
-        for (int i = 0; i < numbers.length; i++) {
-            for (int j = 0; j < numbers.length; j++) {
-                if (numbers[i] + numbers[j] == target) {
-                    solution[0] = i+1;
-                    solution[1] = j+1;
-                    System.out.println(Arrays.toString(solution));
-                    return solution;
-                }
-            }
-        }
-
-        return solution;
+        return new int[]{l + 1, r + 1};
     }
 }
