@@ -70,8 +70,7 @@ class MyCircularQueue {
 
 
 class Solution {
-    
-    public boolean isSubsequence(String s, String t) {
+     public boolean isSubsequence(String s, String t) {
         // Use a hashset to store all input s
         // Go through a loop of input t and everytime it sees
 
@@ -86,14 +85,10 @@ class Solution {
         // I am going to use for loop and if the head character matches one of the character in input t, then I am going to dequeue and check the new head with input t element.
         // If the queue is empty at the end, then I know that input s is subsequence of input t
 
-        char compare = '\0';
-        compare = (char) queue.Front();
         for (char d : t.toCharArray()) {
-            if (compare == d) {
+            if (queue.Front() == d) {
                 queue.deQueue();
-                compare = (char) queue.Front();
             }
-
         }
 
         if (queue.isEmpty()) {
