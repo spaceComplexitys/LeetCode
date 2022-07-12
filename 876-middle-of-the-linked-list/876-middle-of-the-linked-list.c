@@ -23,3 +23,4 @@ struct ListNode* middleNode(struct ListNode* head){
      
     return head;
 }
+
