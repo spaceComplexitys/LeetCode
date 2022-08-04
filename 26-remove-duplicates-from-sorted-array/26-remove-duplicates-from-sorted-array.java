@@ -19,10 +19,12 @@ class Solution {
     //     return i + 1;
     // }
     
-    //Time complextiy : O(n). Assume that nn is the length of array. Each of ii and jj traverses at most nn steps.
+    // Time complextiy : O(n). Assume that nn is the length of array. Each of ii and jj traverses at most nn steps.
 
     // Space complexity : O(1).  No new memory
     
+    
+    // 
     
     public int removeDuplicates(int[] nums) {
         int pos=1;
@@ -35,5 +37,9 @@ class Solution {
 
         return pos;
     }
+    
+    // Time complextiy : O(n). Assume that nn is the length of array. Each of ii and jj traverses at most nn steps.
+
+    // Space complexity : O(1).  No new memory
 
 }
