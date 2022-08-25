@@ -14,23 +14,23 @@
  * }
  */
 class Solution {
-    public TreeNode buildTree(int[] preorder, int[] inorder) {
-    return helper(0, 0, inorder.length - 1, preorder, inorder);
+  public TreeNode buildTree(int[] preorder, int[] inorder) {
+    if(preorder.length!=inorder.length) return null;
+    return build(preorder, 0, preorder.length-1, inorder, 0, inorder.length-1);
 }
 
-public TreeNode helper(int preStart, int inStart, int inEnd, int[] preorder, int[] inorder) {
-    if (preStart > preorder.length - 1 || inStart > inEnd) {
-        return null;
+public TreeNode build(int [] preorder, int preLow, int preHigh, int[] inorder, int inLow, int inHigh){
+    if(preLow>preHigh || inLow>inHigh) return null;
+    TreeNode root = new TreeNode(preorder[preLow]);
+   
+    int inorderRoot = inLow;
+    for(int i=inLow;i<=inHigh;i++){
+        if(inorder[i]==root.val){ inorderRoot=i; break; }
     }
-    TreeNode root = new TreeNode(preorder[preStart]);
-    int inIndex = 0; // Index of current root in inorder
-    for (int i = inStart; i <= inEnd; i++) {
-        if (inorder[i] == root.val) {
-            inIndex = i;
-        }
-    }
-    root.left = helper(preStart + 1, inStart, inIndex - 1, preorder, inorder);
-    root.right = helper(preStart + inIndex - inStart + 1, inIndex + 1, inEnd, preorder, inorder);
-    return root;
+   
+    int leftTreeLen = inorderRoot-inLow;
+    root.left = build(preorder, preLow+1, preLow+leftTreeLen, inorder, inLow, inorderRoot-1);
+    root.right = build(preorder, preLow+leftTreeLen+1, preHigh, inorder, inorderRoot+1, preHigh);       
+    return root;        
 }
 }
