@@ -1,4 +1,6 @@
 class Solution {
+    // O(n) solution
+    // O(1) Space complexity    
    public int rob(int[] nums) {
     if (nums.length == 0) return 0;
     int prev1 = 0;
